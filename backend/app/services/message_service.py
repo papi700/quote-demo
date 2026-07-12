@@ -1,0 +1,1 @@
+"""Future outbound messaging service."""
