@@ -13,13 +13,14 @@ function DetailList({ title, items }) {
   );
 }
 
-export default function QuotePreview({ draft, pricing }) {
+export default function QuotePreview({ draft }) {
   return (
     <section className="card preview-card">
-      <span className="step">Step 4</span>
-      <h2>Preview customer quote</h2>
+      <span className="step">Step 5</span>
+      <h2>Customer-facing quote preview</h2>
       {draft ? (
-        <div className="preview">
+        <div className="preview customer-preview">
+          <p className="review-note">Review before sending.</p>
           <h3>{draft.job_type || "Painting quote"}</h3>
           <p>
             {draft.customer_name || "Customer"}
@@ -33,33 +34,30 @@ export default function QuotePreview({ draft, pricing }) {
             <strong>Finish:</strong> {draft.paint_finish || "To be confirmed"}
             {draft.number_of_coats ? ` - ${draft.number_of_coats}` : ""}
           </p>
-          {pricing?.suggested_low_price != null &&
-            pricing?.suggested_high_price != null && (
-              <p className="preview-range">
-                <strong>Suggested estimating range:</strong>{" "}
-                ${pricing.suggested_low_price.toLocaleString()} - $
-                {pricing.suggested_high_price.toLocaleString()}
-              </p>
-            )}
-          <p className="final-price-label">Painter-approved final price</p>
-          <p className="price">
-            {draft.price_before_tax == null
-              ? "Price to be confirmed"
-              : `$${draft.price_before_tax.toLocaleString()}`}
-          </p>
-          <p className="review-note">Review before sending to the customer.</p>
-          {draft.tax_note && <p>{draft.tax_note}</p>}
           {draft.timeline && (
             <p>
               <strong>Timeline:</strong> {draft.timeline}
             </p>
           )}
+          <p className="final-price-label">Final price</p>
+          <p className="price">
+            {draft.price_before_tax == null
+              ? "Price to be confirmed"
+              : `$${draft.price_before_tax.toLocaleString()}`}
+          </p>
+          {draft.tax_note && <p>{draft.tax_note}</p>}
           {draft.customer_message && (
             <p className="customer-message">{draft.customer_message}</p>
           )}
+
+          <div className="customer-actions" aria-label="Future customer actions">
+            <button type="button" disabled>Approve quote</button>
+            <button type="button" className="secondary" disabled>Ask a question</button>
+            <button type="button" className="secondary" disabled>Request a change</button>
+          </div>
         </div>
       ) : (
-        <p className="muted">Your edited customer-ready quote will be previewed here.</p>
+        <p className="muted">Your customer-facing quote will be previewed here.</p>
       )}
     </section>
   );

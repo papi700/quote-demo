@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { calculatePricing, generateDraft } from "../api/client";
 import AudioRecorder from "../components/AudioRecorder";
+import InternalReview from "../components/InternalReview";
 import NewQuoteForm from "../components/NewQuoteForm";
 import PricingWorksheet from "../components/PricingWorksheet";
 import QuoteDraft from "../components/QuoteDraft";
@@ -117,7 +118,8 @@ export default function DemoPage() {
           onInputChange={handlePricingInputChange}
           onCalculate={handleCalculatePricing}
         />
-        <QuotePreview draft={result} pricing={pricingResult?.pricing} />
+        <InternalReview draft={result} pricingResult={pricingResult} />
+        <QuotePreview draft={result} />
         <AudioRecorder />
       </div>
     </main>

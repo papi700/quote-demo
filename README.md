@@ -55,7 +55,8 @@ Open `http://localhost:5173`. The frontend defaults to `http://127.0.0.1:8000` f
 - Health and transcript draft endpoints are working and covered by tests.
 - Gemini 2.5 Flash-Lite produces schema-validated painter quote drafts when configured. If Google reports that model as unavailable to a new API user, the backend retries Google's `gemini-flash-lite-latest` compatibility alias.
 - `POST /quotes/calculate-pricing` calculates a deterministic suggested range from painter-entered labor, allowance, markup, and risk inputs. It never calls Gemini.
-- The demo UI renders editable quote fields, a pricing worksheet, and a live customer preview with separate suggested and painter-approved prices.
+- The demo UI renders editable quote fields, a pricing worksheet, a clearly marked internal painter review, and a separate customer-facing preview.
+- Suggested ranges, calculation details, missing fields, and confidence notes stay in the internal review; the customer preview shows only the painter-approved final price and customer-ready scope.
 - Audio, quote retrieval, and message routes remain explicit placeholders.
 - No database, authentication, messaging, or audio capture is included.
 

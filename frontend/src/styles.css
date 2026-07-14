@@ -134,12 +134,18 @@ button:disabled {
   background: #fff0f0;
 }
 
+.warning {
+  color: #6f4b00;
+  background: #fff4d6;
+}
+
 .muted {
   font-style: italic;
 }
 
 .draft-card,
 .pricing-card,
+.internal-review-card,
 .preview-card {
   grid-column: 1 / -1;
 }
@@ -220,6 +226,82 @@ button:disabled {
   margin-top: 1.25rem;
 }
 
+.internal-review-card {
+  background: #fffaf0;
+  border-color: #ddc58c;
+  box-shadow: inset 4px 0 0 #c58a14;
+}
+
+.internal-only {
+  display: inline-block;
+  margin: 0.25rem 0 1rem;
+  padding: 0.35rem 0.6rem;
+  color: #694a0a;
+  background: #f7e8bf;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.internal-summary,
+.internal-prices,
+.internal-details {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.internal-summary > div,
+.internal-prices > div,
+.internal-list {
+  padding: 0.9rem;
+  background: rgb(255 255 255 / 70%);
+  border: 1px solid #ead9af;
+  border-radius: 10px;
+}
+
+.internal-summary span,
+.internal-prices span {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #6e6452;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.internal-prices strong {
+  font-size: 1.15rem;
+}
+
+.internal-list ul {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
+.compact {
+  margin-bottom: 0;
+}
+
+.review-before-sending {
+  margin: 1.2rem 0 0;
+  font-weight: 750;
+}
+
+.customer-preview {
+  background: #f7faf8;
+  border: 1px solid #dbe6de;
+}
+
+.customer-actions {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d4e2d8;
+}
+
 .label-hint {
   color: #738078;
   font-size: 0.8rem;
@@ -261,6 +343,19 @@ button:disabled {
 
   .pricing-fields {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .internal-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .internal-prices,
+  .internal-details {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .customer-actions {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .draft-fields .full-width {
