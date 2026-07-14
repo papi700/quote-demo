@@ -1,6 +1,6 @@
 # Voice Note to Quote
 
-Voice Note to Quote is a 14-day demo app for turning a painter's pasted job notes into a reviewable customer quote. It currently generates structured, locally editable painting quote drafts through Gemini, with a deterministic fallback when no API key is configured. Persistence, messaging, transcription, and audio capture are intentionally not implemented yet.
+Voice Note to Quote is a 14-day demo app for turning a painter's pasted job notes into a reviewable customer quote. It generates structured, locally editable painting quote drafts through Gemini, with a deterministic fallback when no API key is configured. A separate deterministic pricing worksheet calculates a suggested estimating range while leaving the final customer price under the painter's control. Persistence, messaging, transcription, and audio capture are intentionally not implemented yet.
 
 ## Architecture
 
@@ -54,13 +54,14 @@ Open `http://localhost:5173`. The frontend defaults to `http://127.0.0.1:8000` f
 
 - Health and transcript draft endpoints are working and covered by tests.
 - Gemini 2.5 Flash-Lite produces schema-validated painter quote drafts when configured. If Google reports that model as unavailable to a new API user, the backend retries Google's `gemini-flash-lite-latest` compatibility alias.
-- The demo UI renders editable quote fields and a live customer preview.
+- `POST /quotes/calculate-pricing` calculates a deterministic suggested range from painter-entered labor, allowance, markup, and risk inputs. It never calls Gemini.
+- The demo UI renders editable quote fields, a pricing worksheet, and a live customer preview with separate suggested and painter-approved prices.
 - Audio, quote retrieval, and message routes remain explicit placeholders.
 - No database, authentication, messaging, or audio capture is included.
 
 ## Next development milestones
 
-1. Improve transcript parsing prompts and quote validation from demo feedback.
+1. Validate quote extraction and pricing defaults with painter feedback.
 2. Add transcription and browser audio capture.
 3. Add persistence for customers and quote drafts.
 4. Add message delivery and follow-up workflows.

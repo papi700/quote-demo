@@ -22,3 +22,13 @@ export function generateDraft(transcript) {
     body: JSON.stringify({ transcript }),
   });
 }
+
+export function calculatePricing(quoteDraft, pricingInputs) {
+  return request("/quotes/calculate-pricing", {
+    method: "POST",
+    body: JSON.stringify({
+      quote_draft: quoteDraft,
+      pricing_inputs: pricingInputs,
+    }),
+  });
+}

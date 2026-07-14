@@ -139,6 +139,7 @@ button:disabled {
 }
 
 .draft-card,
+.pricing-card,
 .preview-card {
   grid-column: 1 / -1;
 }
@@ -153,6 +154,70 @@ button:disabled {
   display: grid;
   align-content: start;
   gap: 0.4rem;
+}
+
+.pricing-fields {
+  display: grid;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.pricing-fields label {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pricing-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f1f7f3;
+  border-radius: 10px;
+}
+
+.range-label,
+.final-price-label {
+  margin-bottom: 0.25rem;
+  color: #526058;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.suggested-range {
+  margin: 0;
+  color: #205c3d;
+  font-size: 1.75rem;
+  font-weight: 750;
+}
+
+.review-note {
+  color: #657169;
+  font-size: 0.9rem;
+}
+
+.pricing-result details,
+.pricing-notes {
+  margin-top: 1rem;
+}
+
+.pricing-result summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pricing-result ul {
+  padding-left: 1.2rem;
+}
+
+.preview-range {
+  padding: 0.8rem;
+  background: #e6f1e9;
+  border-radius: 8px;
+}
+
+.final-price-label {
+  margin-top: 1.25rem;
 }
 
 .label-hint {
@@ -191,6 +256,10 @@ button:disabled {
   }
 
   .draft-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pricing-fields {
     grid-template-columns: 1fr 1fr;
   }
 
