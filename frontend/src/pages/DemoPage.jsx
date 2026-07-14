@@ -21,7 +21,11 @@ export default function DemoPage() {
       setResult(await generateDraft(transcript));
     } catch (requestError) {
       setResult(null);
-      setError("Could not reach the backend. Make sure it is running on port 8000.");
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Could not reach the backend. Make sure it is running on port 8000.",
+      );
     } finally {
       setLoading(false);
     }
@@ -41,8 +45,8 @@ export default function DemoPage() {
           onSubmit={handleSubmit}
           loading={loading}
         />
-        <QuoteDraft result={result} error={error} />
-        <QuotePreview />
+        <QuoteDraft draft={result} onChange={setResult} error={error} />
+        <QuotePreview draft={result} />
         <AudioRecorder />
       </div>
     </main>

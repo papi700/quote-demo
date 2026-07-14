@@ -1,5 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class DraftFromTranscriptRequest(BaseModel):
-    transcript: str = Field(min_length=1)
+    transcript: str
